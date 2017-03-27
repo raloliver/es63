@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Cache-Control: max-age=3600, must-revalidate">
+    <meta name="description" content="IDB: IndexedDB">
+    <title>IDB: IndexedDB</title>
+</head>
+
+<script>
+    //o método open recebe dois parâmetros, o nome do banco e um número como segundo parâmetro.
+    let openRequest = window.indexedDB.open('rodatabase', 1);
+    //Precisamos lidar com um tríade de eventos disparados quando tentamos acessar um banco no IndexedDB.
+    openRequest.onupgradeneeded = function(e) {
+        console.warn('Banco criado/alterado com sucesso.');
+    };
+
+    openRequest.onsuccess = function(e) {
+        console.info('Conexão liberada.');
+    };
+
+    openRequest.onerror = function(event) {
+        console.erro(event.target.error);
+    };
+</script>
+
+<body>
+
+</body>
+</html>
